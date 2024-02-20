@@ -18,18 +18,18 @@ const pupilSchema = new mongoose.Schema({
         maxlength: 32
     },
     phone: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 10
+        maxlength: 20
     },
     fphone: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 10
+        maxlength: 20
     },
     address: {
         type: String,
@@ -46,11 +46,11 @@ const pupilSchema = new mongoose.Schema({
         maxlength: 32
     },
     year: {
-        type: Number,
+        type: String,
         required: true,
         trim: true,
         minlength: 1,
-        maxlength: 5
+        maxlength: 20
     },
     free: {
         type: String,
