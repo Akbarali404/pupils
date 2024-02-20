@@ -12,7 +12,7 @@ app.use((err, req, res, next) => {
 	res.status(500).send("Serverda kutilmagan xato ro'y berdi")
 });
 app.get('/', (req, res) => {
-    res.send('hello world');
+    res.send('Hello world!!!!!!!');
 });
 app.use('/pupils', pupils);
 
