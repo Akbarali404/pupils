@@ -106,6 +106,13 @@ router.get('/', async (req, res) => {
     console.log("Get");
 });
 
+// findone
+router.get('/:id', async (req, res) => {
+    const pupil = await Pupil.findById(req.params.id);
+    res.status(200).send(pupil);
+    console.log("Get ID", pupil);
+});
+
 router.delete('/delete', async (req, res) => {
     const puppil = await Pupil.findByIdAndDelete(req.body._id);
     res.status(200).send(puppil);
