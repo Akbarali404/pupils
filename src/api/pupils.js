@@ -8,65 +8,70 @@ const pupilSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 50
+        maxlength: 32
     },
     surname: {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 50
+        maxlength: 32
     },
     phone: {
         type: Number,
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 50
+        maxlength: 10
     },
     fphone: {
         type: Number,
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 50
+        maxlength: 10
     },
     address: {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 1000
+        maxlength: 100
     },
     about: {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 1000
+        maxlength: 32
     },
     year: {
         type: Number,
         required: true,
         trim: true,
-        minlength: 3,
-        maxlength: 50
+        minlength: 1,
+        maxlength: 5
     },
     free: {
         type: String,
         required: true,
         trim: true,
-        minlength: 2,
-        maxlength: 500
+        minlength: 1,
+        maxlength: 50
     },
     subject1: {
         type: String,
         required: true,
         trim: true,
         minlength: 2,
-        maxlength: 1000
+        maxlength: 32
     },
-    subject2: String
+    subject2: {
+        type: String,
+        trim: true,
+        minlength: 2,
+        maxlength: 32
+    }
 });
 
 const Pupil = mongoose.model("Pupil", pupilSchema);
@@ -101,10 +106,28 @@ router.get('/', async (req, res) => {
     console.log("Get");
 });
 
-router.post('/delete', async (req, res) => {
+router.delete('/delete', async (req, res) => {
     const puppil = await Pupil.findByIdAndDelete(req.body._id);
     res.status(200).send(puppil);
     console.log("Delete", puppil);
 });
+
+router.put('/update', async (req, res) => {
+    const newPupil = await {
+        name: req.body.name,
+        surname: req.body.surname,
+        phone: req.body.phone,
+        fphone: req.body.fphone,
+        address: req.body.address,
+        about: req.body.about,
+        year: req.body.year,
+        free: req.body.free,
+        subject1: req.body.subject1,
+        subject2: req.body.subject2
+    }
+    const puppil = await Pupil.findByIdAndUpdate(req.body._id, newPupil);
+    res.status(200).send(puppil);
+    console.log("Update", puppil);
+})
 
 module.exports = router;
