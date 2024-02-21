@@ -113,7 +113,7 @@ router.get('/:id', async (req, res) => {
     console.log("Get ID", pupil);
 });
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     const puppil = await Pupil.findByIdAndDelete(req.params.id);
     res.status(200).send(puppil);
     console.log("Delete", puppil);
