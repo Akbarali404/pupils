@@ -119,7 +119,7 @@ router.delete('/delete/:id', async (req, res) => {
     console.log("Delete", puppil);
 });
 
-router.put('/update', async (req, res) => {
+router.put('/update/:id', async (req, res) => {
     const newPupil = await {
         name: req.body.name,
         surname: req.body.surname,
@@ -132,7 +132,7 @@ router.put('/update', async (req, res) => {
         subject1: req.body.subject1,
         subject2: req.body.subject2
     }
-    const puppil = await Pupil.findByIdAndUpdate(req.body._id, newPupil);
+    const puppil = await Pupil.findByIdAndUpdate(req.params.id, newPupil);
     res.status(200).send(puppil);
     console.log("Update", puppil);
 })
